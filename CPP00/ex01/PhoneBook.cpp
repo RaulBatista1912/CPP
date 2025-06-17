@@ -2,6 +2,7 @@
 #include <iostream>
 #include <iomanip>
 #include <limits>
+#include <cstdio>
 
 PhoneBook::PhoneBook() : TotalContacts(0), NextIndex(0) {}
 
@@ -15,18 +16,53 @@ void	PhoneBook::addContact() {
 	std::string fn, ln, nn, pn, ds;
 
 	std::cout << "First Name: ";
-	std::getline(std::cin, fn);
+	if (!std::getline(std::cin, fn)) {
+		if (std::cin.eof()) {
+			std::cin.clear();
+			clearerr(stdin);
+			std::cout << "\nInput canceled. Contact not saved. Returning to main menu\n";
+			return;
+		}
+	}
 	std::cout << "Last Name: ";
-	std::getline(std::cin, ln);
+	if (!std::getline(std::cin, ln)) {
+		if (std::cin.eof()) {
+			std::cin.clear();
+			clearerr(stdin);
+			std::cout << "\nInput canceled. Contact not saved. Returning to main menu\n";
+			return;
+		}
+	}
 	std::cout << "Nickname: ";
-	std::getline(std::cin, nn);
+	if (!std::getline(std::cin, nn)) {
+		if (std::cin.eof()) {
+			std::cin.clear();
+			clearerr(stdin);
+			std::cout << "\nInput canceled. Contact not saved. Returning to main menu\n";
+			return;
+		}
+	}
 	std::cout << "Phone Number: ";
-	std::getline(std::cin, pn);
+	if (!std::getline(std::cin, pn)) {
+		if (std::cin.eof()) {
+			std::cin.clear();
+			clearerr(stdin);
+			std::cout << "\nInput canceled. Contact not saved. Returning to main menu\n";
+			return;
+		}
+	}
 	std::cout << "Darkest Secret: ";
-	std::getline(std::cin, ds);
+	if (!std::getline(std::cin, ds)) {
+		if (std::cin.eof()) {
+			std::cin.clear();
+			clearerr(stdin);
+			std::cout << "\nInput canceled. Contact not saved. Returning to main menu\n";
+			return;
+		}
+	}
 
 	if (fn.empty() || ln.empty() || nn.empty() || pn.empty() || ds.empty()){
-		std::cout << "Error: All fields must be filled. Contact not saved.\n";
+		std::cout << "All fields must be filled. Contact not saved.\n";
 		return;
 	}
 

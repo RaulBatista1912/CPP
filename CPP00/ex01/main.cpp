@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <sstream>
+#include <cstdio>
 
 int	main() {
 	PhoneBook pb;
@@ -9,9 +10,14 @@ int	main() {
 
 	while (true) {
 		std::cout << "Enter a command (ADD, SEARCH, EXIT): ";
-		std::getline(std::cin, command);
-		if (std::cin.eof()) {
-			break;
+
+		if (!std::getline(std::cin, command)) {
+			if (std::cin.eof()) {
+				std::cin.clear();
+				clearerr(stdin);
+				std::cout << "\n";
+				continue;
+			}
 		}
 		if (command == "ADD") {
 			pb.addContact();
@@ -23,8 +29,10 @@ int	main() {
 				std::string indexStr;
 				std::getline(std::cin, indexStr);
 				if (std::cin.eof()) {
-					std::cout << "Exiting...\n";
-					return 0;
+					std::cout << "\nInput Canceled. Returning to main menu\n";
+					std::cin.clear();
+					clearerr(stdin);
+					break;
 				}
 				std::stringstream ss(indexStr);
 				int	index;
