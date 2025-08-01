@@ -44,6 +44,7 @@ int	main() {
 
 	std::cout << "\nc > d: " << (c > d) << std::endl;
 	std::cout << "c == e: " << (c == e) << std::endl;
+	std::cout << "c != e:" << (c != e) << std::endl;
 	std::cout << "c - d: " << (c - d) << std::endl;
 	std::cout << "c * d: " << (c * d) << std::endl;
 	std::cout << "c / d: " << (c / d) << std::endl;

@@ -15,8 +15,8 @@ int	main() {
 	c.attack("Pierre");
 	c.attack("Pierre");
 	c.attack("Pierre");
-	c = b;
-	c.attack("poo");
+	a = b;
+	a.attack("poo");
 	std::cout << "\n";
 
 	ClapTrap d("Bully");
