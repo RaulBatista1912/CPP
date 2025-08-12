@@ -22,19 +22,37 @@ int main() {
 	for (int i = 0; i < 100; ++i)
 		delete animals[i];
 
-	std::cout << "=======subject test=======" << std::endl;
+	std::cout << "\n==============\n" << std::endl;
+
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
+	j->makeSound();
+	i->makeSound();
 
 	delete j;
 	delete i;
-	std::cout << "=======more test=======" << std::endl;
-	Animal* a = new Animal();
+
+	std::cout << "\n==============\n" << std::endl;
+
+	Animal* a = new Dog();
 	a->makeSound();
-	Dog* b = new Dog();
+	Animal* b = new Cat();
 	b->makeSound();
+	Animal* c = new Animal();
+	c->makeSound();
+
+
 	delete a;
 	delete b;
+	delete c;
+
+	std::cout << "\n==============\n" << std::endl;
+
+	WrongAnimal* d = new WrongCat();
+	d->makeSound();
+
+	WrongCat e;
+	e.makeSound();
 
 return 0;
 }

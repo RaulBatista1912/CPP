@@ -19,9 +19,6 @@ Animal::~Animal() {
 	std::cout << "*Animal destrctor called*" << std::endl;
 }
 
-std::string Animal::getType() const {
-	return type;
-}
 
 void	Animal::makeSound() const {
 	std::cout << "Animal makes a generic sound" << std::endl;
