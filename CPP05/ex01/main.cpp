@@ -77,4 +77,14 @@ int	main(void) {
 	catch (const std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
+
+	std::cout << "\n-------test Form-------" << std::endl;
+	Form test_Form("test_Form", 100, 50);
+	Bureaucrat Random("Random", 101);
+	try {
+		Random.signForm(test_Form);
+	}
+	catch (const std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
 }
