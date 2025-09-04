@@ -4,6 +4,7 @@
 #include "PresidentialPardonForm.hpp"
 #include <ctime>
 #include <cstdlib>
+#include "Intern.hpp"
 
 int	main()
 {
@@ -17,7 +18,7 @@ int	main()
 		PDG.executeForm(form_PDG);
 	}
 	catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 
 	std::cout << "\n-------Test ShrubberyCreationForm with 145 grade-------" << std::endl;
@@ -28,7 +29,7 @@ int	main()
 		Noob.executeForm(form_noob);
 	}
 	catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 
 	std::cout << "\n-------Test RobotomyRequestForm with 1 grade-------" << std::endl;
@@ -39,7 +40,7 @@ int	main()
 		Robot.executeForm(form_robot);
 	}
 	catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 
 	std::cout << "\n-------Test RobotomyRequestForm with 1 grade-------" << std::endl;
@@ -50,7 +51,7 @@ int	main()
 		Robot2.executeForm(form_robot2);
 	}
 	catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 	
 	std::cout << "\n-------Test PresidentialPardonForm with 150 and 1 grade-------" << std::endl;
@@ -66,7 +67,7 @@ int	main()
 		BOSS.executeForm(Pardon);
 	}
 	catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
 
 	std::cout << "\n-------Test PresidentialPardonForm with beSigned-------" << std::endl;
@@ -79,6 +80,26 @@ int	main()
 		CEO.executeForm(PLS);
 	}
 	catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
+
+	std::cout << "\n-------Test Intern-------" << std::endl;
+	Intern SomeRandomIntern;
+	Bureaucrat BOSS2("BOSS2", 1);
+	AForm* rrf = NULL;
+
+	try {
+		rrf = SomeRandomIntern.makeForm("robotomy request", "Bender");
+		BOSS2.signForm(*rrf);
+		BOSS2.executeForm(*rrf);
+	}
+	catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+	delete rrf;
+
+	std::cout << "\n-------Test Intern-------" << std::endl;
+	Intern AnotherRnadomIntern;
+	Bureaucrat BIGBOSS("BIGBOSS", 1);
+
 }
