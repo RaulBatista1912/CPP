@@ -81,4 +81,17 @@ int	main()
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
+
+	std::cout << "\n-------Test-------" << std::endl;
+	AForm *a = new PresidentialPardonForm("pardon");
+
+	a->beSigned(CEO);
+	a->execute(CEO);
+	delete a;
+
+	std::cout << "\n-------Test2-------" << std::endl;
+	AForm *b = new RobotomyRequestForm("robot");
+	b->beSigned(CEO);
+	CEO.executeForm(*b);
+	delete b;
 }

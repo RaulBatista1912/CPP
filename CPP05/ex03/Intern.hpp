@@ -17,6 +17,11 @@ class Intern {
 		AForm	*createShrubbery(const std::string &target);
 		AForm	*createRobotomy(const std::string &target);
 		AForm	*createPresidential(const std::string &target);
+
+		class InvalidArgument : public std::exception {
+			public:
+				virtual const char* what() const throw();
+		};
 };
 
 #endif

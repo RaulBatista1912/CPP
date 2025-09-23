@@ -22,6 +22,10 @@ Intern::~Intern() {
 
 }
 
+const char* Intern::InvalidArgument::what() const throw() {
+	return "Intern: Invalid Form!";
+}
+
 AForm *Intern::makeForm(const std::string &name, const std::string &target) {
 	std::string formNames[] = {"shrubbery creation", "robotomy request", "presidential pardon"};
 	for (int i = 0; i < 3; i++) {
@@ -34,6 +38,5 @@ AForm *Intern::makeForm(const std::string &name, const std::string &target) {
 			}
 		}
 	}
-	std::cout << "Error: form '" << name << "' does not exist." << std::endl;
-	return NULL;
+	throw InvalidArgument();
 }

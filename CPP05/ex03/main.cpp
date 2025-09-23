@@ -98,8 +98,18 @@ int	main()
 	}
 	delete rrf;
 
-	std::cout << "\n-------Test Intern-------" << std::endl;
-	Intern AnotherRnadomIntern;
-	Bureaucrat BIGBOSS("BIGBOSS", 1);
+	std::cout << "\n-------Test Intern with wrong Form-------" << std::endl;
+	Intern SomeRandomIntern2;
+	Bureaucrat BOSS3("BOSS3", 1);
+	AForm* rrf2 = NULL;
 
+	try {
+		rrf2 = SomeRandomIntern2.makeForm("not a Form", "Bender");
+		BOSS3.signForm(*rrf2);
+		BOSS3.executeForm(*rrf2);
+	}
+	catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+	delete rrf2;
 }

@@ -70,8 +70,7 @@ bool	ScalarConverter::isDouble(const std::string &literal) {
 		if (literal[i] == '.') {
 			if (dot == true)
 				return false;
-			else if (dot == false)
-				dot = true;
+			dot = true;
 		}
 		i++;
 	}
