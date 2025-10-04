@@ -2,7 +2,7 @@ NAME = main
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp PhoneBook.cpp Contact.cpp
+SRCS = main.cpp Span.cpp
 OBJS = $(SRCS:%.cpp=obj/%.o)
 
 all: $(NAME)

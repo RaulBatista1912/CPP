@@ -32,12 +32,11 @@ int	main() {
 		std::cout << str[0] << std::endl;
 		str[0] = "hello";
 		str[1] = "world";
-		std::cout << str[0] << " " << str[1] << std::endl;
+		str[2] = "!";
+		std::cout << str[0] << " " << str[1] << str[2] << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
-	
-	
 }

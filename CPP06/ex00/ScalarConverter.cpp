@@ -117,7 +117,6 @@ void	ScalarConverter::PrintDouble(double value) {
 
 void	ScalarConverter::convert(const std::string &literal) {
 	double	value = 0.0;
-	char	*end;
 
 	try {
 		if (literal == "+inff" || literal == "+inf")
@@ -129,11 +128,11 @@ void	ScalarConverter::convert(const std::string &literal) {
 		else if (isChar(literal))
 			value = static_cast<double>(literal[0]);
 		else if (isInt(literal))
-			value = std::strtod(literal.c_str(), &end);
+			value = std::strtod(literal.c_str(), 0);
 		else if (isFloat(literal))
-			value = std::strtod(literal.c_str(), &end);
+			value = std::strtod(literal.c_str(), 0);
 		else if (isDouble(literal))
-			value = std::strtod(literal.c_str(), &end);
+			value = std::strtod(literal.c_str(), 0);
 		else
 			throw WrongArgument();
 	}

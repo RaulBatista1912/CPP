@@ -12,7 +12,8 @@ int	main()
 
 	std::cout << "-------Test ShrubberyCreationForm with 1 grade-------" << std::endl;
 	Bureaucrat PDG("PDG", 1);
-	ShrubberyCreationForm form_PDG("tree");
+	ShrubberyCreationForm form_PDG("tree")
+	;
 	try {
 		PDG.signForm(form_PDG);
 		PDG.executeForm(form_PDG);

@@ -91,7 +91,12 @@ int	main()
 
 	std::cout << "\n-------Test2-------" << std::endl;
 	AForm *b = new RobotomyRequestForm("robot");
-	b->beSigned(CEO);
+	(*b).beSigned(CEO);
 	CEO.executeForm(*b);
 	delete b;
+
+	std::cout << "\n-------Testggg-------" << std::endl;
+	PresidentialPardonForm fds;
+	fds = PLS;
+	CEO.executeForm(fds);
 }
