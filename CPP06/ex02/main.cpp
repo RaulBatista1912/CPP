@@ -93,14 +93,19 @@ int	main() {
 	C c;
 	C c2 = dynamic_cast<C&>(c);
 
+	std::cout << "\n----testMOREEEE4----" << std::endl;
+	Base *c5 = NULL;
+	A *a5 = dynamic_cast<A*>(c5);
+	if (a5 == NULL)
+		std::cout << "bad cast" << std::endl;
 
 	delete ptr;
 	delete ptr2;
 	delete ptr3;
 
 	//std::cout << "\n----testSegFault----" << std::endl;
-	//C *c3 = NULL;
-	//B &b9 = dynamic_cast<B&>(*c3);
+	//C c3;
+	//B &b9 = dynamic_cast<B&>(c3);
 	//(void)b9;
 
 	return (0);
