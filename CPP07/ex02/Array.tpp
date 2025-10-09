@@ -39,6 +39,13 @@ T& Array<T>::operator[](unsigned int i) {
 }
 
 template <typename T>
+const T& Array<T>::operator[](unsigned int i) const {
+	if (i >= len)
+		throw OutOfBoundsException();
+	return (array[i]);
+}
+
+template <typename T>
 const char *Array<T>::OutOfBoundsException::what() const throw () {
 	return ("Error: Index out of bounds");
 }
@@ -47,6 +54,3 @@ template <typename T>
 size_t Array<T>::size() const {
 	return (len);
 }
-
-
-
