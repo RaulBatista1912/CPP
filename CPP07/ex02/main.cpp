@@ -36,10 +36,10 @@ int	main() {
 	}
 
 	std::cout << "\n----test4----" << std::endl;
-	Array<int> gg(4);
+	Array<int> gg(2);
 	gg[0] = 5;
 	gg[1] = 2;
 	const Array<int> const_str(gg);
-	std::cout << "g[0] : " << const_str[0] << std::endl;
-	std::cout << "g[1] : " << const_str[1] << std::endl;
+	std::cout << "gg[0] : " << const_str[0] << std::endl;
+	std::cout << "gg[1] : " << const_str[1] << std::endl;
 }
