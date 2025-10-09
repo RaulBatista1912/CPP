@@ -48,7 +48,35 @@ std::cout << *it2 << std::endl;
 ++it2;
 }
 
-std::cout << "---test with string---" << std::endl;
+std::cout << "---test with non const iterator---" << std::endl;
+MutantStack<int> intstack;
+intstack.push(1);
+intstack.push(2);
+intstack.push(3);
+intstack.push(4);
+MutantStack<int>::iterator x = intstack.begin();
+MutantStack<int>::iterator y = intstack.end();
+while (x < y) {
+	*x += 5;
+	std::cout << *x << std::endl;
+	x++;
+
+}
+
+std::cout << "---test with const iterator---" << std::endl;
+MutantStack<int> cstack;
+cstack.push(1);
+cstack.push(2);
+cstack.push(3);
+MutantStack<int>::const_iterator p = cstack.begin();
+MutantStack<int>::const_iterator q = cstack.end();
+while (p < q) {
+	//*p += 5;
+	std::cout << *p << std::endl;
+	p++;
+}
+
+std::cout << "---test with string const iterator---" << std::endl;
 MutantStack<std::string> sstack;
 sstack.push("hello");
 sstack.push("world");
@@ -63,9 +91,7 @@ while (i != j) {
 	std::cout << *i << std::endl;
 	i++;
 }
-
 std::cout << "---reverse---" << std::endl;
-
 i--;
 std::cout << *i << std::endl;
 i--;
