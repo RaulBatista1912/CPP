@@ -47,6 +47,7 @@ while (it2 != ite2)
 std::cout << *it2 << std::endl;
 ++it2;
 }
+std::list<int> s2(list);
 
 std::cout << "---test with non const iterator---" << std::endl;
 MutantStack<int> intstack;

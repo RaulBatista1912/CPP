@@ -27,9 +27,9 @@ int main() {
 	vec2.push_back("hello");
 	vec2.push_back("world");
 	vec2.push_back("!");
-	std::vector<std::string>::iterator i = std::find(vec2.begin(), vec2.end(), std::string("world"));
-	if (i != vec2.end())
-		std::cout << "'" << *i << "' found\n";
+	std::vector<std::string>::iterator it3 = std::find(vec2.begin(), vec2.end(), std::string("world"));
+	if (it3 != vec2.end())
+		std::cout << "'" << *it3 << "' found\n";
 	else
 		std::cout << "string not found\n";
 }

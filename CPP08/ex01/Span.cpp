@@ -50,11 +50,10 @@ int	Span::longestSpan() {
 	std::vector<int> tmp = vec;
 	std::sort(tmp.begin(), tmp.end());
 	return (tmp.back() - tmp.front());
-
 }
 
-void	Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end) {
-	if (vec.size() + std::distance(begin, end) > _N)
+void	Span::addMultipleNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end) {
+	if (vec.size() + (end - begin) > _N)
 		throw ContainerFullException();
 	vec.insert(vec.end(), begin, end);
 }

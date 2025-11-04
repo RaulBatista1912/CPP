@@ -16,7 +16,7 @@ class Span {
 		void	addNumber(int n);
 		int	shortestSpan();
 		int	longestSpan();
-		void	addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end);
+		void	addMultipleNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 
 		class ContainerFullException : public std::exception {
 			public :

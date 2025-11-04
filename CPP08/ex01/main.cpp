@@ -29,7 +29,7 @@ int	main() {
 		v.push_back(random);
 	}
 	try {
-		mid.addNumber(v.begin(), v.end());
+		mid.addMultipleNumbers(v.begin(), v.end());
 		std::cout << "shortest span : " << mid.shortestSpan() << std::endl;
 		std::cout << "longest span : " << mid.longestSpan() << std::endl;
 	}
@@ -59,7 +59,7 @@ int	main() {
 		v2.push_back(big_numb);
 	}
 	try {
-		big.addNumber(v2.begin(), v2.end());
+		big.addMultipleNumbers(v2.begin(), v2.end());
 		std::cout << "shortest span : " << big.shortestSpan() << std::endl;
 		std::cout << "longest span : " << big.longestSpan() << std::endl;
 	}
