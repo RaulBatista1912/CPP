@@ -29,10 +29,7 @@ void	Convert(std::string date, std::string value, std::map<std::string, double> 
 	int	month = std::atoi(monthStr.c_str());
 	int	day = std::atoi(dayStr.c_str());
 	float	numb = std::atof(value.c_str());
-
-	if (month < 1 || month > 12)
-		std::cerr << "Error: bad date input => " << date << std::endl;
-	else if (day < 1 || day > 31)
+	if (date.length() != 11 || month < 1 || month > 12 || day < 1 || day > 31)
 		std::cerr << "Error: bad date input => " << date << std::endl;
 	else if (numb < 0 || numb > 1000)
 		std::cerr << "Error: bad value input =>" << value << std::endl;
