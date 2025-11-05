@@ -103,11 +103,6 @@ void	trim_line(std::string line, std::string *date, std::string *value) {
 		return;
 	}
 	sep = line.find('|');
-	if (sep == std::string::npos) {
-		*value = "";
-		*date = "";
-		return;
-	}
 	*date = line.substr(0, sep);
 	*value = line.substr(sep + 1);
 }
