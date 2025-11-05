@@ -91,15 +91,42 @@ int	is_digit(std::string numb) {
 	return 0;
 }
 
+void	trim_line(std::string line, std::string *date, std::string *value) {
+	size_t sep = 0;
+	for (size_t i = 0; i < line.size(); i++) {
+		if (line[i] == '|')
+			sep++;
+	}
+	if (sep != 1) {
+		*value = "";
+		*date = "";
+		return;
+	}
+	sep = line.find('|');
+	if (sep == std::string::npos) {
+		*value = "";
+		*date = "";
+		return;
+	}
+	*date = line.substr(0, sep);
+	*value = line.substr(sep + 1);
+}
+
 int	Check_arg(char *arg, std::map<std::string, double> data) {
 	std::ifstream file(arg);
 	if (!file.is_open()) {
 		std::cerr << "Error: Cannot open the file" << std::endl;
 		return 1;
 	}
+	std::string line;
 	std::string date;
 	std::string value;
-	while (std::getline(file, date, '|') && std::getline(file, value)) {
+	while (std::getline(file, line)) {
+		trim_line(line, &date, &value);
+		if (date.empty() || value.empty()) {
+			std::cerr << "Error: bad input line => " << line << std::endl;
+			continue;
+		}
 		if (date == "date " && value == " value")
 			continue;
 		Convert(date, value, data);

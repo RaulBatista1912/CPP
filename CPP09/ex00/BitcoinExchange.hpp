@@ -14,3 +14,4 @@ void	Convert(std::string date, std::string value, std::map<std::string, double> 
 int	is_digit(std::string numb);
 int	is_good_value(std::string value);
 int	is_good_date(std::string dateStr);
+void	trim_line(std::string line, std::string *date, std::string *value);
