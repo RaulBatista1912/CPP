@@ -71,7 +71,7 @@ int	is_good_value(std::string value) {
 	int	f = 0;
 
 	for (size_t i = 0; i < value.size(); i++) {
-		if (value[i] == '.' && isdigit(value[i - 1]))
+		if (value[i] == '.' && std::isdigit(value[i - 1]))
 			dot++;
 		else if (value[i] == 'f' && value[i + 1] == '\0')
 			f++;

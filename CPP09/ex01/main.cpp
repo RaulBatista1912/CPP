@@ -5,7 +5,9 @@ int	main(int ac, char **av) {
 		std::cerr << "Error: One argument needed!" << std::endl;
 		return (1);
 	}
-	std::stack<int> stack;
-	if(check_arg(av[1], stack))
+	std::string line;
+	if(check_arg(av[1], &line))
 		return (1);
+	Convert(line);
+	return (0);
 }
