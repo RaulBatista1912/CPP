@@ -21,12 +21,12 @@ int	Stock_data_base(std::map<std::string, double>& data) {
 void	Convert(std::string date, std::string value, std::map<std::string, double> data) {
 	float	numb = std::atof(value.c_str());
 
-	if (is_good_date(date.substr(0, date.size() - 1)))
+	if (is_good_date(date))
 		std::cerr << "Error: bad date input => " << date << std::endl;
-	else if (numb < 0 || numb > 1000 || is_good_value(value.substr(1, value.size()))) 
-		std::cerr << "Error: bad value input =>" << value << std::endl;
+	else if (numb < 0 || numb > 1000 || is_good_value(value)) 
+		std::cerr << "Error: bad value input => " << value << std::endl;
 	else {
-		std::string key = date.substr(0, date.size() - 1);
+		std::string key = date;
 		std::map<std::string, double>::const_iterator it = data.lower_bound(key);
 		if (it == data.end())
 			--it;
@@ -55,15 +55,15 @@ int	is_good_date(std::string dateStr) {
 	int	day = std::atoi(dayStr.c_str());
 	int	year = std::atoi(yearStr.c_str());
 
-	if (year < 2000 || year > 2999 || month < 1 || month > 12 || day < 1 || day > 31 || is_digit(yearStr) || is_digit(monthStr) || is_digit(dayStr))
+	if (dateStr.size() != 10 || year < 2000 || year > 2999 || month < 1 || month > 12 || day < 1 || day > 31 || is_digit(yearStr) || is_digit(monthStr) || is_digit(dayStr))
 		return 1;
 	for (size_t i = 0; i < dateStr.size(); i++) {
 		if (dateStr[i] == '-')
 			count++;
 	}
 	if (count != 2)
-		return 1;
-	return 0;
+		return (1);
+	return (0);
 }
 
 int	is_good_value(std::string value) {
@@ -71,24 +71,24 @@ int	is_good_value(std::string value) {
 	int	f = 0;
 
 	for (size_t i = 0; i < value.size(); i++) {
-		if (value[i] == '.')
+		if (value[i] == '.' && isdigit(value[i - 1]))
 			dot++;
-		else if (value[i] == 'f')
+		else if (value[i] == 'f' && value[i + 1] == '\0')
 			f++;
 		else if (!std::isdigit(value[i]))
-			return 1;
+			return (1);
 	}
 	if (dot <= 1 && f <= 1)
-		return 0;
-	return 1;
+		return (0);
+	return (1);
 }
 
 int	is_digit(std::string numb) {
 	for (size_t i = 0; i < numb.size(); i++) {
 		if (!std::isdigit(numb[i]))
-			return 1;
+			return (1);
 	}
-	return 0;
+	return (0);
 }
 
 void	trim_line(std::string line, std::string *date, std::string *value) {
@@ -102,16 +102,21 @@ void	trim_line(std::string line, std::string *date, std::string *value) {
 		*date = "";
 		return;
 	}
-	sep = line.find('|');
-	*date = line.substr(0, sep);
-	*value = line.substr(sep + 1);
+	std::string trimmed_line;
+	for(size_t i = 0; i < line.size(); i++) {
+		if (line[i] != ' ')
+			trimmed_line += line[i];
+	}
+	sep = trimmed_line.find('|');
+	*date = trimmed_line.substr(0, sep);
+	*value = trimmed_line.substr(sep + 1);
 }
 
 int	Check_arg(char *arg, std::map<std::string, double> data) {
 	std::ifstream file(arg);
 	if (!file.is_open()) {
 		std::cerr << "Error: Cannot open the file" << std::endl;
-		return 1;
+		return (1);
 	}
 	std::string line;
 	std::string date;
@@ -122,9 +127,9 @@ int	Check_arg(char *arg, std::map<std::string, double> data) {
 			std::cerr << "Error: bad input line => " << line << std::endl;
 			continue;
 		}
-		if (date == "date " && value == " value")
+		if (date == "date" && value == "value")
 			continue;
 		Convert(date, value, data);
 	}
-	return 0;
+	return (0);
 }
