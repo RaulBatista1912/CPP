@@ -8,28 +8,29 @@ int main() {
 	vec.push_back(76);
 	
 	std::cout << "----test1----" << std::endl;
-	std::vector<int>::iterator it = std::find(vec.begin(), vec.end(), 42);
+	std::vector<int>::iterator it = easyfind(vec, 42);
 	if (it != vec.end())
 		std::cout << *it << " found\n";
 	else
 		std::cout << "number not found\n";
 
 	std::cout << "\n----test2----" << std::endl;
-	std::vector<int>::iterator it2 = std::find(vec.begin(), vec.end(), 2);
+	std::vector<int>::iterator it2 = easyfind(vec, 2);
 	if (it2 != vec.end())
 		std::cout << *it2 << " found\n";
 	else
 		std::cout << "number not found\n";
 
 	std::cout << "\n----test3----" << std::endl;
-	std::vector<std::string> vec2;
-	vec2.push_back("salut");
-	vec2.push_back("hello");
-	vec2.push_back("world");
-	vec2.push_back("!");
-	std::vector<std::string>::iterator it3 = std::find(vec2.begin(), vec2.end(), std::string("world"));
-	if (it3 != vec2.end())
-		std::cout << "'" << *it3 << "' found\n";
+	std::list<int> list;
+	list.push_back(1);
+	list.push_back(5);
+	list.push_back(7);
+	list.push_back(52);
+	std::list<int>::iterator it3 = easyfind(list, 7);
+	if (it3 != list.end())
+		std::cout << *it3 << " found\n";
 	else
-		std::cout << "string not found\n";
+		std::cout << "number not found\n";
+
 }

@@ -39,9 +39,15 @@ void	Convert(std::string line) {
 			stack.pop();
 			int	result = 0;
 			switch (line[i]) {
-				case '+': result = b + a; break;
-				case '-': result = b - a; break;
-				case '*': result = b * a; break;
+				case '+':
+					result = b + a;
+					break;
+				case '-':
+					result = b - a;
+					break;
+				case '*':
+					result = b * a;
+					break;
 				case '/':
 					if (a == 0) {
 						std::cerr << "Error: impossible to divide by zero!" << std::endl;

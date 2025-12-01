@@ -1,17 +1,23 @@
 #include "BitcoinExchange.hpp"
 
 int	Stock_data_base(std::map<std::string, double>& data) {
-	std::ifstream file("data.csv");
+	std::ifstream file("input.csv");
 	if (!file.is_open()) {
-		std::cerr << "Error: Cannot open the 'data.csv'" << std::endl;
+		std::cerr << "Error: Cannot open the '.csv' file" << std::endl;
 		return (1);
 	}
-	std::string date;
-	std::string valuestr;
-	while (std::getline(file, date, ',') && std::getline(file, valuestr)) {
+	std::string line;
+	while (std::getline(file, line)) {
+		std::size_t pos = line.find('|');
+		if (pos == std::string::npos) {
+			std::cerr << "Error: Invalid line, '|' needed :" << line << std::endl;
+			return (1);
+		}
+		std::string date = line.substr(0, pos);
+		std::string valuestr = line.substr(pos + 1);
 		if (date == "date" && valuestr == "exchange_rate")
 			continue;
-		double value = std::strtod(valuestr.c_str(), 0);
+		double value = std::strtod(valuestr.c_str(), NULL);
 		data[date] = value;
 	}
 	file.close();
